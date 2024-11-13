@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Notes</h1>
+    {% for note in notes %}
+    <div>
+        <p>{{note.name}}</p>
+        <p>CWID: {{note.CWID}}</p>
+        <ul>
+            <li>{{note.body}}</li>
+        </ul>
+        <form id="del" action="/delete/{{note._id}}">
+        <button type="submit" form="del">Delete</button>
+        </form>
+    </div>
+    <hr/>
+    {% endfor %}
+
+    <form action="/add" method="POST" id="form">
+        <label for="name">Name</label>
+        <input id="name" name="name"/>
+        <label for="cwid">CWID</label>
+        <input id="cwid" name="CWID"/>
+        <label for="desc">Description</label>
+        <textarea name="body" id="desc" placeholder="Description"></textarea>
+        <button type="submit" form="form">Add Note</button>
+    </form>
+
+
+</body>
+</html>
